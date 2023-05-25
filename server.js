@@ -1,5 +1,17 @@
-const app = require('./app')
+const app = require("./App");
+const Pool = require('./src/db/db')
 
-app.listen(3000, () => {
-  console.log("Server running. Use our API on port: 3000")
-})
+Pool.getConnection()
+  .then(connection => {
+    console.log("Connected to the database");
+    connection.release();
+  })
+  .catch(error => {
+    console.error("Error connecting to the database:", error);
+    process.exit(1);
+  });
+
+app.listen(8080, () => {
+  console.log("Server started");
+}
+)
