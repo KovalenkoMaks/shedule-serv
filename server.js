@@ -1,4 +1,4 @@
-const app = require("./App");
+const app = require("./app");
 const Pool = require('./src/db/db')
 
 Pool.getConnection()
